@@ -1,12 +1,20 @@
 function DeleteItem(){
-    console.log(this.parentElement)
     this.parentElement.remove()
 }
 
 function EditarItem(){
-    console.log(this.parentElement)
-    this.parentElement.edit()
     
+    item_lista = this.parentElement
+    texto_item_lista = item_lista.innerText.replace("DeleteEdit", " ")
+    add_element = document.querySelector('[data-form-input]')
+    add_element.value = texto_item_lista 
+    
+    const botao_submit = document.querySelector('[button-submit]')
+    
+
+    const botao_edit = document.querySelector('[button-edit]')
+    botao_edit.classList.remove('d-none')
+
 }
 
 function CriarBotaoDelete(){
@@ -41,13 +49,26 @@ function Submit(){
     novo_item_lista.appendChild(CriarBotaoDelete())
     lista.appendChild (novo_item_lista)
     novo_item_lista.appendChild(CriarBotaoEditar())
-    lista.appendChild (novo_item_lista)
+    
 
     document.getElementById("item").value = ""
 }
+ 
+function Edit(){
+    
+    add_texto = add_element.value
+    item_lista.innerHTML = add_texto
 
-// fiz até onde deu com os conhecimentos em sala, só faltou a parte de editar mesmo as li's. 
+    const botao_submit = document.querySelector('[button-submit]')
+    botao_submit.classList.remove('d-none')
+    botao_submit.classList.add('btn', 'btn-primary')
 
+    const botao_edit = document.querySelector('[button-edit]')
+    botao_edit.classList.add('d-none')
+
+    input_element.value = ''
+
+}
 
 
 
